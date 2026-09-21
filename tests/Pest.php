@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\InstructorProfile;
+use App\Models\Subscription;
+use App\Models\SubscriptionPayment;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -47,4 +51,17 @@ expect()->extend('toBeOne', function () {
 function something()
 {
     // ..
+}
+
+/** @return array{0: SubscriptionPayment, 1: Collection<int, InstructorProfile>} */
+function ledgerPayment(int $amount = 10000, int $instructorCount = 2): array
+{
+    $subscription = Subscription::factory()->create(['starts_on' => '2026-01-01', 'ends_on' => '2026-01-31', 'price_minor' => $amount]);
+    $instructors = InstructorProfile::factory()->count($instructorCount)->create();
+    foreach ($instructors as $instructor) {
+        $subscription->instructors()->attach($instructor, ['weight' => 1, 'effective_from' => '2026-01-01']);
+    }
+    $payment = SubscriptionPayment::factory()->for($subscription)->create(['amount_minor' => $amount, 'paid_at' => '2026-01-01']);
+
+    return [$payment, $instructors];
 }
