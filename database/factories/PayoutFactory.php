@@ -7,6 +7,7 @@ use App\Models\InstructorProfile;
 use App\Models\Payout;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<Payout> */
 class PayoutFactory extends Factory
 {
     protected $model = Payout::class;

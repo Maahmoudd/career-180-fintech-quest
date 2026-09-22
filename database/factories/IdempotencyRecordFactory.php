@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\IdempotencyRecord;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<IdempotencyRecord> */
 class IdempotencyRecordFactory extends Factory
 {
     protected $model = IdempotencyRecord::class;

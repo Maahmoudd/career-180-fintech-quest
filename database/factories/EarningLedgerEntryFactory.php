@@ -7,6 +7,7 @@ use App\Models\EarningLedgerEntry;
 use App\Models\InstructorProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<EarningLedgerEntry> */
 class EarningLedgerEntryFactory extends Factory
 {
     protected $model = EarningLedgerEntry::class;

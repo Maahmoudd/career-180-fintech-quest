@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Models\SubscriptionPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<Subscription> */
 class SubscriptionFactory extends Factory
 {
     protected $model = Subscription::class;

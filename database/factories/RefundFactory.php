@@ -6,6 +6,7 @@ use App\Models\Refund;
 use App\Models\SubscriptionPayment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<Refund> */
 class RefundFactory extends Factory
 {
     protected $model = Refund::class;

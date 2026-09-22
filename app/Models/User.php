@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -12,10 +13,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $role
+ *
+ * @use HasFactory<UserFactory>
+ */
 #[Fillable(['name', 'email', 'role', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
 {
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     protected function casts(): array
@@ -23,11 +33,13 @@ class User extends Authenticatable implements FilamentUser
         return ['email_verified_at' => 'datetime', 'password' => 'hashed'];
     }
 
+    /** @return HasOne<InstructorProfile, $this> */
     public function instructorProfile(): HasOne
     {
         return $this->hasOne(InstructorProfile::class);
     }
 
+    /** @return HasOne<StudentProfile, $this> */
     public function studentProfile(): HasOne
     {
         return $this->hasOne(StudentProfile::class);

@@ -6,6 +6,7 @@ use App\Enums\PlanInterval;
 use App\Models\SubscriptionPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<SubscriptionPlan> */
 class SubscriptionPlanFactory extends Factory
 {
     protected $model = SubscriptionPlan::class;

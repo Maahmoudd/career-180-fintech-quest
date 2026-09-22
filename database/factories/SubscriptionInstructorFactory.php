@@ -7,6 +7,7 @@ use App\Models\Subscription;
 use App\Models\SubscriptionInstructor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<SubscriptionInstructor> */
 class SubscriptionInstructorFactory extends Factory
 {
     protected $model = SubscriptionInstructor::class;

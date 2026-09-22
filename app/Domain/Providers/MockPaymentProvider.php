@@ -111,6 +111,11 @@ final class MockPaymentProvider implements PaymentProvider
 
     public function successfulTransfers(): int
     {
-        return (int) $this->store->query("SELECT COUNT(*) FROM transfers WHERE outcome = 'succeeded'")->fetchColumn();
+        $statement = $this->store->query("SELECT COUNT(*) FROM transfers WHERE outcome = 'succeeded'");
+        if ($statement === false) {
+            throw new \RuntimeException('Unable to query the mock provider store.');
+        }
+
+        return (int) $statement->fetchColumn();
     }
 }

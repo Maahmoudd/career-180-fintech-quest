@@ -6,6 +6,7 @@ use App\Models\Payout;
 use App\Models\PayoutAttempt;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<PayoutAttempt> */
 class PayoutAttemptFactory extends Factory
 {
     protected $model = PayoutAttempt::class;

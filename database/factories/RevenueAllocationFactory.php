@@ -6,6 +6,7 @@ use App\Models\RevenueAllocation;
 use App\Models\SubscriptionPayment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<RevenueAllocation> */
 class RevenueAllocationFactory extends Factory
 {
     protected $model = RevenueAllocation::class;

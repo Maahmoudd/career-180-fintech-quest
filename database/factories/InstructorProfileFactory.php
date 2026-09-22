@@ -6,6 +6,7 @@ use App\Models\InstructorProfile;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<InstructorProfile> */
 class InstructorProfileFactory extends Factory
 {
     protected $model = InstructorProfile::class;

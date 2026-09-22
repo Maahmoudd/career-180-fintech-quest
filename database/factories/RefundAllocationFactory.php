@@ -7,6 +7,7 @@ use App\Models\RefundAllocation;
 use App\Models\RevenueAllocation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<RefundAllocation> */
 class RefundAllocationFactory extends Factory
 {
     protected $model = RefundAllocation::class;

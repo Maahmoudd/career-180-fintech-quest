@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\ProviderEvent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<ProviderEvent> */
 class ProviderEventFactory extends Factory
 {
     protected $model = ProviderEvent::class;
