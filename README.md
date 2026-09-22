@@ -8,7 +8,7 @@ The application uses the current compatible stack in this repository: PHP 8.4, L
 
 - PHP 8.4 with PDO SQLite for local tests, or Docker.
 - Composer 2.9+.
-- Node 22+ and npm for frontend assets, or Docker for the PHP/MySQL/Redis runtime.
+- Node 22.18+ and npm for frontend assets, or Docker for the PHP/MySQL/Redis runtime.
 - Docker 29+ and Docker Compose v2 for the reproducible environment.
 
 ## Docker setup
@@ -23,7 +23,9 @@ docker compose up -d app worker scheduler
 docker compose exec app php artisan db:seed --force
 ```
 
-The web application is available at `http://localhost:8000`. Filament is at `/admin`; create an administrator in a controlled environment with `php artisan tinker` or add one to a private seed override. The compose file runs MySQL 8.4, Redis 7, an application server, a queue worker, and a scheduler. Do not commit `.env` or production secrets.
+The image performs the frontend build with Node 22.18 during `docker compose build`, so the application, worker, and scheduler do not depend on a host `node_modules` directory. The `public-build` volume preserves those compiled assets when the source tree is bind-mounted for local development.
+
+The web application is available at `http://localhost:8001`. Filament is at `/admin`; create an administrator in a controlled environment with `php artisan tinker` or add one to a private seed override. The compose file runs MySQL 8.4, Redis 7, an application server, a queue worker, and a scheduler. MySQL is configured with `log_bin_trust_function_creators=1` so the application migration can install its immutable-history triggers while binary logging is enabled. The application, MySQL, and Redis are exposed on host ports 8001, 3307, and 6380 by default to avoid collisions with local services; set `APP_HOST_PORT`, `MYSQL_HOST_PORT`, or `REDIS_HOST_PORT` when different host ports are needed. Do not commit `.env` or production secrets.
 
 ## Local installation
 

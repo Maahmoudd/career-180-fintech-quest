@@ -25,6 +25,8 @@ class SubscriptionInstructor extends Pivot
 
     public $incrementing = true;
 
+    protected $table = 'subscription_instructors';
+
     protected $fillable = ['subscription_id', 'instructor_profile_id', 'weight', 'effective_from', 'effective_until'];
 
     protected function casts(): array

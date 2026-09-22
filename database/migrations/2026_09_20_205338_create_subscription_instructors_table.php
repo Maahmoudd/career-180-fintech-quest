@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('effective_from');
             $table->date('effective_until')->nullable();
             $table->timestamps();
-            $table->unique(['subscription_id', 'instructor_profile_id', 'effective_from']);
+            $table->unique(['subscription_id', 'instructor_profile_id', 'effective_from'], 'subscription_instructors_participation_unique');
             $table->index(['subscription_id', 'effective_from']);
         });
     }

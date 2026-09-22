@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('effective_at');
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->index(['instructor_profile_id', 'type', 'effective_at']);
+            $table->index(['instructor_profile_id', 'type', 'effective_at'], 'ledger_entries_type_effective_index');
         });
     }
 
